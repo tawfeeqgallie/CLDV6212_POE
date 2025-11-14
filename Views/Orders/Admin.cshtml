@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CLDV6212_POE.Models.Order>
+
+<h2>All Orders</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var o in Model)
+        {
+            <tr>
+                <td>@o.Id</td>
+                <td>@o.CustomerId</td>
+                <td>@o.Status</td>
+                <td>@o.CreatedAt</td>
+                <td>
+                    @if (o.Status != "Processed")
+                    {
+                        <a asp-controller="Orders"
+                           asp-action="Process"
+                           asp-route-id="@o.Id"
+                           class="btn btn-success btn-sm">
+                            Process
+                        </a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

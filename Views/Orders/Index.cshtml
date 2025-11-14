@@ -1,0 +1,31 @@
+﻿@model CLDV6212_POE.Models.Order
+
+<h2>Your Cart</h2>
+
+@if (Model == null || !Model.Lines.Any())
+{
+    <p>Your cart is empty.</p>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>Product</th>
+            <th>Qty</th>
+            <th>Price</th>
+        </tr>
+
+        @foreach (var line in Model.Lines)
+        {
+            <tr>
+                <td>@line.ProductId</td>
+                <td>@line.Quantity</td>
+                <td>@line.UnitPrice</td>
+            </tr>
+        }
+    </table>
+
+    <form asp-controller="Orders" asp-action="Checkout" method="post">
+        <button type="submit" class="btn btn-primary">Checkout</button>
+    </form>
+}

@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to CLDV6212_POE</h1>
+    <p class="lead">Use the links below to navigate:</p>
+
+    <div class="d-flex justify-content-center gap-3 mt-4">
+        <a class="btn btn-primary btn-lg" asp-controller="Products" asp-action="Index">Manage Products</a>
+        <a class="btn btn-secondary btn-lg" asp-controller="Customers" asp-action="Index">Manage Customers</a>
+        <a class="btn btn-success btn-lg" asp-controller="Orders" asp-action="Index">Manage Orders</a>
+        <a class="btn btn-info btn-lg" asp-controller="Files" asp-action="Index">Upload Files</a>
+    </div>
+</div>

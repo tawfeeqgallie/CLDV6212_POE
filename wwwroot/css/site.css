@@ -1,0 +1,451 @@
+:root {
+    --primary-green: #10b981;
+    --dark-green: #047857;
+    --medium-green: #059669;
+    --light-green: #d1fae5;
+    --very-light-green: #f0fdf4;
+    --white: #ffffff;
+    --off-white: #f9fafb;
+    --text-dark: #1f2937;
+    --text-gray: #6b7280;
+    --border-color: #d1d5db;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* General body and text with fade-in animation */
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, var(--very-light-green) 0%, var(--white) 100%);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+    animation: fadeIn 0.6s ease-in;
+    min-height: 100vh;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Container tweaks */
+.container {
+    max-width: 1100px;
+    animation: slideUp 0.7s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Headings with gradient text effect */
+h1, h2, h3 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--dark-green) 0%, var(--primary-green) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: slideInLeft 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+h1 {
+    font-size: 2.5rem;
+    letter-spacing: -0.5px;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+/* Navbar adjustments with glass effect */
+.navbar {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-md);
+    border-bottom: 2px solid var(--primary-green);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: var(--dark-green) !important;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+    .navbar-brand:hover {
+        transform: scale(1.05);
+        color: var(--primary-green) !important;
+    }
+
+.navbar .nav-link {
+    margin-right: 10px;
+    color: var(--text-dark) !important;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+    .navbar .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: var(--primary-green);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .navbar .nav-link:hover {
+        color: var(--primary-green) !important;
+    }
+
+        .navbar .nav-link:hover::after {
+            width: 80%;
+        }
+
+/* Footer with gradient */
+footer.footer {
+    font-size: 0.9rem;
+    background: linear-gradient(135deg, var(--dark-green) 0%, var(--medium-green) 100%);
+    color: var(--white);
+    padding: 2rem 0;
+    margin-top: 3rem;
+    box-shadow: var(--shadow-lg);
+}
+
+/* Tables with hover effects */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 1rem;
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    animation: fadeInScale 0.6s ease-out;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+table th, table td {
+    border: 1px solid var(--border-color);
+    padding: 12px 16px;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+table th {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--medium-green) 100%);
+    color: var(--white);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+table tbody tr {
+    transition: all 0.3s ease;
+}
+
+    table tbody tr:hover {
+        background-color: var(--light-green);
+        transform: scale(1.01);
+        box-shadow: var(--shadow-sm);
+    }
+
+    table tbody tr:nth-child(even) {
+        background-color: var(--very-light-green);
+    }
+
+/* Buttons with animations */
+.btn {
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+    .btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    .btn:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--medium-green) 100%);
+    color: var(--white);
+    box-shadow: var(--shadow-md);
+}
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+        background: linear-gradient(135deg, var(--medium-green) 0%, var(--dark-green) 100%);
+    }
+
+.btn-secondary {
+    background: var(--white);
+    color: var(--primary-green);
+    border: 2px solid var(--primary-green);
+}
+
+    .btn-secondary:hover {
+        background: var(--primary-green);
+        color: var(--white);
+        transform: translateY(-2px);
+    }
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Forms with modern styling */
+form {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    animation: fadeInScale 0.6s ease-out;
+}
+
+    form div {
+        margin-bottom: 1.2rem;
+    }
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="file"],
+select, textarea {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 14px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--off-white);
+}
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    input[type="email"]:focus,
+    input[type="file"]:focus,
+    select:focus, textarea:focus {
+        outline: none;
+        border-color: var(--primary-green);
+        background: var(--white);
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        transform: translateY(-1px);
+    }
+
+label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+/* Alerts with slide-in animation */
+.validation-summary-errors, .field-validation-error {
+    color: #dc3545;
+    font-size: 0.9rem;
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+/* TempData messages with slide-down */
+.alert {
+    margin-top: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid;
+    animation: slideDown 0.5s ease-out;
+    box-shadow: var(--shadow-md);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert-success {
+    background-color: var(--light-green);
+    border-color: var(--primary-green);
+    color: var(--dark-green);
+}
+
+.alert-info {
+    background-color: #dbeafe;
+    border-color: #3b82f6;
+    color: #1e40af;
+}
+
+.alert-warning {
+    background-color: #fef3c7;
+    border-color: #f59e0b;
+    color: #92400e;
+}
+
+.alert-danger {
+    background-color: #fee2e2;
+    border-color: #dc3545;
+    color: #991b1b;
+}
+
+/* Cards and panels */
+.card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    animation: fadeInScale 0.6s ease-out;
+}
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--primary-green);
+    }
+
+/* Loading spinner animation */
+.spinner {
+    border: 3px solid var(--light-green);
+    border-top: 3px solid var(--primary-green);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 2rem auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Pulse animation for important elements */
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+    background: var(--primary-green);
+    color: var(--white);
+}
+
+::-moz-selection {
+    background: var(--primary-green);
+    color: var(--white);
+}

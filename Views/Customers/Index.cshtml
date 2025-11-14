@@ -1,0 +1,15 @@
+@model IEnumerable<CLDV6212_POE.Models.Customer>
+
+<h2>Customers</h2>
+<p><a asp-action="Create">Add Customer</a></p>
+
+<ul>
+    @foreach (var c in (Model ?? Enumerable.Empty<CLDV6212_POE.Models.Customer>()))
+    {
+        <li>@c.FirstName @c.LastName (@c.Email)</li>
+    }
+    @if ((Model == null) || !Model.Any())
+    {
+        <li><em>No customers yet.</em></li>
+    }
+</ul>

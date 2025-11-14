@@ -1,0 +1,36 @@
+﻿@model CLDV6212_POE.Models.Order?
+
+<h2>Your Cart</h2>
+
+@if (Model == null || !Model.Lines.Any())
+{
+    <p>Your cart is empty.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Unit Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model.Lines)
+            {
+                <tr>
+                    <td>@line.ProductName</td>
+                    <td>@line.Quantity</td>
+                    <td>@line.UnitPrice</td>
+                    <td>@(line.Quantity* line.UnitPrice)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <form asp-action="Checkout" method="post">
+        <button type="submit" class="btn btn-success">Confirm Order</button>
+    </form>
+}

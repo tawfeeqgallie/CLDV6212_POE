@@ -1,0 +1,54 @@
+@model IEnumerable<CLDV6212_POE.Models.FileItemVm>
+@{
+    ViewData["Title"] = "Files";
+}
+
+<h2>Upload File</h2>
+<form asp-action="Upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+@if (TempData["ok"] != null)
+{
+    <div class="alert alert-success mt-3">@TempData["ok"]</div>
+}
+
+<h3 class="mt-4">Existing Files</h3>
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Size (KB)</th>
+                <th>Last Modified</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var f in Model)
+            {
+                <tr>
+                    <td>@f.Name</td>
+                    <td>@Math.Round(f.Length / 1024.0, 1)</td>
+                    <td>@(f.LastModified?.ToLocalTime().ToString("yyyy-MM-dd HH:mm") ?? "")</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(f.Url))
+                        {
+                            <a class="btn btn-sm btn-outline-secondary" href="@f.Url" target="_blank">Open</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-muted">No files uploaded yet.</p>
+}

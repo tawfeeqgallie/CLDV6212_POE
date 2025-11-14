@@ -1,0 +1,39 @@
+@model IEnumerable<CLDV6212_POE.Models.Product>
+
+<h2>Products</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Add</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>
+                    @if (!string.IsNullOrEmpty(p.ImageUrl))
+                    {
+                        <img src="@p.ImageUrl" style="height:60px" />
+                    }
+                </td>
+                <td>@p.Name</td>
+                <td>@p.Price</td>
+                <td>
+                    <a asp-controller="Orders"
+                       asp-action="Add"
+                       asp-route-productId="@p.Id"
+                       asp-route-quantity="1"
+                       asp-route-price="@p.Price"
+                       class="btn btn-success btn-sm">
+                        Add to Cart
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

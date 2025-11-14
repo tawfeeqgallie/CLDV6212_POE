@@ -1,0 +1,8 @@
+@model CLDV6212_POE.Models.Product
+@{ ViewData["Title"]="Product Details"; Layout = "_Layout"; }
+<h2>@Model.Name</h2>
+<p>Price: @Model.Price</p>
+<p>Quantity: @Model.Quantity</p>
+@if(!string.IsNullOrEmpty(Model.ImageUrl)){
+    <img src="@Model.ImageUrl" width="200" />
+}

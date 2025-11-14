@@ -1,0 +1,35 @@
+﻿@model IEnumerable<CLDV6212_POE.Models.Order>
+
+<h2>All Orders</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order #</th>
+            <th>Customer ID</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var o in Model)
+        {
+            <tr>
+                <td>@o.Id</td>
+                <td>@o.CustomerId</td>
+                <td>@o.Status</td>
+                <td>@o.CreatedAt</td>
+                <td>
+                    @if (o.Status != "PROCESSED")
+                    {
+                        <form asp-action="Process" method="post">
+                            <input type="hidden" name="id" value="@o.Id" />
+                            <button type="submit" class="btn btn-sm btn-primary">Mark PROCESSED</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
